@@ -3,3 +3,4 @@ node_modules
 *.obs
 .env
 venv
+test
