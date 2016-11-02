@@ -8,6 +8,14 @@ module.exports = function(sequelize, DataTypes){
       },
       password: {
         type: DataTypes.STRING
+      },
+      wins: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+      },
+      games: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       }
     }, {
       instanceMethods: {
