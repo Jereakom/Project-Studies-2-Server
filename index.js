@@ -22,7 +22,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/users', function(req, res) {
-  models.User.findAll({}).then(function(user){
+  models.User.findAll({
+    attributes:{
+      exclude:['password', 'createdAt', 'updatedAt']
+    }
+  }).then(function(user){
     res.json(user);
   });
 });
@@ -31,6 +35,9 @@ app.get('/users/:id', function(req, res) {
   models.User.findOne({
     where:{
       id: req.params.id
+    },
+    attributes: {
+      exclude: ['password', 'createdAt', 'updatedAt']
     }
   }).then(function(user){
     res.json(user);
@@ -63,7 +70,7 @@ app.post('/login', function(req, res, err){
     var comparison = user.validPassword(req.body.password);
     if (comparison)
     {
-      res.send("logged in!");
+      res.send(user);
     }
     else
     {
@@ -111,6 +118,10 @@ app.get('/leaderboards', function(req,res, err){
   }).then(function(user){
     res.send(user);
   });
+});
+
+app.get('*', function (req, res){
+  res.redirect('/');
 });
 
 app.listen(port, function(){
