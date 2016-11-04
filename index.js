@@ -10,6 +10,7 @@ var models = require('./models');
 
 var cors = require('cors');
 var bodyParser = require('body-parser');
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
