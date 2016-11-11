@@ -95,6 +95,16 @@ app.post('/users/:id/games', function(req, res, err){
       user.wins = user.wins + 1;
       user.save();
     }
+    else if (req.body.tie == 1)
+    {
+      user.ties = user.ties + 1;
+      user.save();
+    }
+    else
+    {
+      user.losses = user.losses + 1;
+      user.save();
+    }
     user.save();
     res.send("Game logged successfully");
   }).catch(function(err){

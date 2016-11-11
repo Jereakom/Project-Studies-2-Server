@@ -16,6 +16,14 @@ module.exports = function(sequelize, DataTypes){
       games: {
         type: DataTypes.INTEGER,
         defaultValue: 0
+      },
+      losses: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+      },
+      ties: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       }
     }, {
       instanceMethods: {
